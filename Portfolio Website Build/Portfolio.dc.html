@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #17100f; color: #ece3d6; font-family: 'Space Grotesk', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  ::selection { background: #b0424f; color: #fdf6ee; }
+  input, textarea { font-family: inherit; }
+  @keyframes tapulse { 0%,100% { box-shadow: 0 0 0 0 rgba(176,66,79,0.55); } 50% { box-shadow: 0 0 0 10px rgba(176,66,79,0); } }
+  @keyframes tafloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  @keyframes tamarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes tashimmer { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+  @keyframes taspin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+</style>
+</helmet>
+<div ref="{{ setRoot }}" style="position:relative; width:100%; max-width:100vw;">
+
+  <nav style="position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; justify-content:space-between; padding:20px clamp(20px,5vw,64px); backdrop-filter:blur(14px); background:linear-gradient(180deg, rgba(23,16,15,0.85), rgba(23,16,15,0)); ">
+    <a href="#hero" style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:#ece3d6; text-decoration:none; display:flex; align-items:center; gap:10px;">
+      <span style="width:9px; height:9px; border-radius:50%; background:#b0424f; display:inline-block;"></span>Tamanna Arora
+    </a>
+    <div style="display:flex; align-items:center; gap:clamp(14px,2.4vw,34px);">
+      <a href="#journey" style="font-size:14px; color:#a89685; text-decoration:none; letter-spacing:0.02em;">Journey</a>
+      <a href="#projects" style="font-size:14px; color:#a89685; text-decoration:none; letter-spacing:0.02em;">Projects</a>
+      <a href="#skills" style="font-size:14px; color:#a89685; text-decoration:none; letter-spacing:0.02em;">Skills</a>
+      <a href="#contact" style="font-size:13px; color:#fdf6ee; text-decoration:none; padding:9px 18px; border:1px solid rgba(233,224,214,0.22); border-radius:999px; white-space:nowrap;">Let's talk</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" style="position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:140px clamp(20px,5vw,64px) 80px; overflow:hidden;">
+    <div style="position:absolute; top:-10%; right:-8%; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(176,66,79,0.22), transparent 62%); filter:blur(20px); pointer-events:none; animation:tafloat 9s ease-in-out infinite;"></div>
+    <div style="position:absolute; bottom:6%; left:-6%; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle, rgba(205,143,129,0.14), transparent 60%); filter:blur(24px); pointer-events:none;"></div>
+
+    <div style="position:relative; max-width:1240px; margin:0 auto; width:100%;">
+      <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:#cd8f81; display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+        <span style="width:34px; height:1px; background:#cd8f81; display:inline-block;"></span>SDE Intern · AI/ML · Full-stack
+      </div>
+
+      <h1 data-reveal style="opacity:0; transform:translateY(30px); transition:opacity 1s cubic-bezier(.16,1,.3,1) .08s, transform 1s cubic-bezier(.16,1,.3,1) .08s; font-family:'Instrument Serif',serif; font-weight:400; font-size:clamp(58px,12vw,176px); line-height:0.92; letter-spacing:-0.01em; color:#f4ece0;">
+        Tamanna<br><span style="font-style:italic; color:#cd8f81;">Arora</span>
+      </h1>
+
+      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:40px; margin-top:44px;">
+        <p data-reveal style="opacity:0; transform:translateY(20px); transition:opacity .9s ease .18s, transform .9s ease .18s; max-width:520px; font-size:clamp(17px,1.5vw,21px); line-height:1.55; color:#c9b8a8;">
+          Computer-science engineer crafting <span style="color:#f4ece0;">AI systems</span>, resilient <span style="color:#f4ece0;">backends</span>, and interfaces people actually love to use.
+        </p>
+        <div data-reveal style="opacity:0; transform:translateY(20px); transition:opacity .9s ease .26s, transform .9s ease .26s; display:flex; gap:14px;">
+          <a href="#projects" style="font-size:15px; color:#fdf6ee; background:#b0424f; padding:15px 28px; border-radius:999px; text-decoration:none; font-weight:500;">View projects</a>
+          <a href="#contact" style="font-size:15px; color:#ece3d6; padding:15px 28px; border:1px solid rgba(233,224,214,0.22); border-radius:999px; text-decoration:none;">Let's talk</a>
+        </div>
+      </div>
+
+      <div data-reveal style="opacity:0; transform:translateY(20px); transition:opacity 1s ease .34s, transform 1s ease .34s; display:flex; flex-wrap:wrap; gap:36px; margin-top:64px; padding-top:30px; border-top:1px solid rgba(233,224,214,0.1); font-family:'JetBrains Mono',monospace;">
+        <div><div style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#8a7768; margin-bottom:6px;">GPA</div><div style="font-size:20px; color:#f4ece0;">8.54 / 10</div></div>
+        <div><div style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#8a7768; margin-bottom:6px;">Focus</div><div style="font-size:20px; color:#f4ece0;">AI / ML</div></div>
+        <div><div style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#8a7768; margin-bottom:6px;">Based in</div><div style="font-size:20px; color:#f4ece0;">Delhi, India</div></div>
+        <div><div style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:#8a7768; margin-bottom:6px;">Now</div><div style="font-size:20px; color:#cd8f81;">@ Lehar Technologies</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS MARQUEE ============ -->
+  <div style="overflow:hidden; border-top:1px solid rgba(233,224,214,0.08); border-bottom:1px solid rgba(233,224,214,0.08); padding:22px 0; background:#1c1412;">
+    <div style="display:flex; width:max-content; animation:tamarquee 26s linear infinite; font-family:'Instrument Serif',serif; font-size:34px; color:#5f4f47; gap:44px;">
+      {{ marqueeEl }}
+    </div>
+  </div>
+
+  <!-- ============ JOURNEY ============ -->
+  <section id="journey" style="position:relative; padding:clamp(90px,12vh,150px) clamp(20px,5vw,64px); max-width:1240px; margin:0 auto;">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:70px;">
+      <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; font-family:'Instrument Serif',serif; font-size:clamp(40px,6vw,84px); line-height:1; color:#f4ece0;">My <span style="font-style:italic; color:#cd8f81;">journey</span></h2>
+      <span data-reveal style="opacity:0; transition:opacity .8s ease .2s; font-family:'JetBrains Mono',monospace; font-size:13px; color:#8a7768; letter-spacing:0.14em;">2021 → PRESENT</span>
+    </div>
+
+    <div style="position:relative;">
+      <div style="position:absolute; left:clamp(7px,3.4vw,50%); top:0; bottom:0; width:1px; background:linear-gradient(180deg, rgba(205,143,129,0.05), rgba(205,143,129,0.4), rgba(205,143,129,0.05));"></div>
+      <div style="display:flex; flex-direction:column; gap:clamp(40px,6vh,72px);">
+        {{ journeyEl }}
+      </div>
+    </div>
+
+    <div data-reveal style="opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease; margin-top:64px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#8a7768; margin-right:8px;">Recognition</span>
+      {{ honorsEl }}
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" style="position:relative; padding:clamp(80px,10vh,130px) clamp(20px,5vw,64px) clamp(90px,12vh,150px); overflow:hidden;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:20px;">
+        <span data-reveal style="opacity:0; transition:opacity .8s ease; font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#cd8f81;">Selected work</span>
+        <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .8s ease .1s, transform .8s ease .1s; font-family:'Instrument Serif',serif; font-size:clamp(40px,6vw,84px); line-height:1.02; color:#f4ece0; margin-top:12px;">The <span style="font-style:italic; color:#cd8f81;">constellation</span></h2>
+        <p style="max-width:440px; margin:16px auto 0; color:#a89685; font-size:15px; line-height:1.5;">Each node is a live project. Hover to lift, tap to open its embedded preview.</p>
+      </div>
+      {{ projectsUI }}
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" style="position:relative; padding:clamp(80px,10vh,130px) clamp(20px,5vw,64px); background:#1c1412; border-top:1px solid rgba(233,224,214,0.08); border-bottom:1px solid rgba(233,224,214,0.08);">
+    <div style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(40px,5vw,72px); align-items:start;">
+      <div style="position:sticky; top:100px;">
+        <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; font-family:'Instrument Serif',serif; font-size:clamp(40px,6vw,80px); line-height:1; color:#f4ece0;">What I <span style="font-style:italic; color:#cd8f81;">work with</span></h2>
+        <p data-reveal style="opacity:0; transition:opacity .8s ease .2s; margin-top:20px; color:#a89685; font-size:15px; line-height:1.6; max-width:340px;">A toolkit spanning models, backends, and the front of house — chosen for shipping real systems, not demos.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        {{ skillsEl }}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" style="position:relative; padding:clamp(90px,12vh,160px) clamp(20px,5vw,64px); overflow:hidden;">
+    <div style="position:absolute; bottom:-20%; left:50%; transform:translateX(-50%); width:760px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(176,66,79,0.16), transparent 60%); filter:blur(30px); pointer-events:none;"></div>
+    <div style="position:relative; max-width:1040px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(40px,5vw,80px); align-items:start;">
+      <div>
+        <span data-reveal style="opacity:0; transition:opacity .8s ease; font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#cd8f81;">Let's talk</span>
+        <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .8s ease .1s, transform .8s ease .1s; font-family:'Instrument Serif',serif; font-size:clamp(44px,6vw,92px); line-height:0.98; color:#f4ece0; margin:14px 0 26px;">Have an idea?<br><span style="font-style:italic; color:#cd8f81;">Let's build it.</span></h2>
+        <div style="display:flex; flex-direction:column; gap:14px; font-family:'JetBrains Mono',monospace; font-size:14px;">
+          <a href="mailto:tamannaarora9313@gmail.com" style="color:#ece3d6; text-decoration:none; display:flex; align-items:center; gap:12px;"><span style="color:#8a7768;">01</span> tamannaarora9313@gmail.com</a>
+          <a href="tel:+917015627741" style="color:#ece3d6; text-decoration:none; display:flex; align-items:center; gap:12px;"><span style="color:#8a7768;">02</span> +91 70156 27741</a>
+          <div style="display:flex; gap:18px; margin-top:8px; padding-top:16px; border-top:1px solid rgba(233,224,214,0.1);">
+            <a href="#" style="color:#cd8f81; text-decoration:none;">LinkedIn</a>
+            <a href="#" style="color:#cd8f81; text-decoration:none;">GitHub</a>
+            <a href="#" style="color:#cd8f81; text-decoration:none;">LeetCode</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal style="opacity:0; transform:translateY(28px); transition:opacity .9s ease, transform .9s ease;">
+        {{ contactForm }}
+      </div>
+    </div>
+
+    <div style="max-width:1040px; margin:clamp(70px,10vh,120px) auto 0; padding-top:28px; border-top:1px solid rgba(233,224,214,0.1); display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; color:#8a7768;">
+      <span>© 2026 Tamanna Arora</span>
+      <span>Designed &amp; built with intent</span>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;}}">
+class Component extends DCLogic {
+  // ─────────────────────────────────────────────────────────────
+  //  EDIT HERE — plug in real links / screenshots / details later
+  // ─────────────────────────────────────────────────────────────
+  projects = [
+    {
+      short: 'TerraViT',
+      name: 'TerraViT',
+      sub: 'AI-Powered Climate Intelligence',
+      tech: ['Vision Transformers', 'FastAPI', 'PyTorch', 'Next.js'],
+      badge: '3rd · Global AI Summit 2025',
+      liveUrl: '',            // ← paste deployed URL to embed a live preview
+      repoUrl: '',            // ← paste GitHub URL
+      points: [
+        'End-to-end climate monitoring using Vision Transformers on geospatial satellite imagery to detect and explain environmental change.',
+        'FastAPI + PyTorch inference backend with an interactive Next.js frontend visualizing predictions, temporal shifts, and attention-based insight.'
+      ]
+    },
+    {
+      short: 'TrafficAI',
+      name: 'Multi-Violation Traffic Monitoring',
+      sub: 'Real-time computer vision at 285 FPS',
+      tech: ['YOLO', 'PaddleOCR', 'OpenCV', 'Roboflow'],
+      badge: 'Deployed',
+      liveUrl: '',
+      repoUrl: '',
+      points: [
+        '4 YOLO detection pipelines — helmet, illegal parking, driver monitoring, signal violations — at 85–99.8% mAP@50; parking model hit 99.8% precision at 285 FPS.',
+        '8-class violation detector on 6,724 images + a multi-task driver model (drowsiness, distraction, seatbelt) at 92.1% mAP@50 with PaddleOCR plate extraction.'
+      ]
+    },
+    {
+      short: 'SafeNet',
+      name: 'SafeNet',
+      sub: 'Disaster Awareness Safety Platform · SIH',
+      tech: ['TypeScript', 'Node.js', 'MongoDB', 'Geospatial APIs'],
+      badge: 'Smart India Hackathon',
+      liveUrl: '',
+      repoUrl: '',
+      points: [
+        'Multi-dashboard platform improving disaster awareness for students, with separate portals for students, teachers, parents, and admins.',
+        'Age-specific learning modules, real-time monitoring, and secure auth, integrating disaster-prediction APIs and geospatial data.'
+      ]
+    }
+  ];
+
+  journey = [
+    { date: 'Feb 2026 — Present', title: 'Software Development Engineer Intern', org: 'Lehar Technologies · Remote', type: 'work', ongoing: true,
+      desc: 'Architecting 10+ interconnected MES portals, real-time IoT pipelines over MQTT from 14+ press machines, and full GCP backend deployment — plus client sites with self-serve admin panels and a Three.js 3D model.' },
+    { date: '2025 — 2026', title: 'General Secretary · Media Head', org: 'ACM Research Chapter (NY) · Uphoria Fest', type: 'role',
+      desc: 'Led research-focused initiatives, technical events, and team operations; drove content, digital promotion, and event visibility.' },
+    { date: 'July 2024 — 2028', title: 'B.Tech, Computer Science (AI/ML)', org: 'Bennett University · Delhi', type: 'edu',
+      desc: 'GPA 8.54 / 10. Core focus across AI/ML, DBMS, OOP, and operating systems alongside applied full-stack engineering.' },
+    { date: '2021 — 2024', title: 'Senior Secondary · Schooling', org: 'SGMS Delhi & SDVM Panipat · CBSE', type: 'edu',
+      desc: 'Class XII — 80% · Class X — 95%.' }
+  ];
+
+  skills = [
+    { cat: 'Languages', items: ['Python', 'Java', 'C / C++', 'JavaScript'] },
+    { cat: 'Frameworks & Tech', items: ['React.js', 'Tailwind', 'Flask', 'FastAPI', 'MongoDB', 'MySQL', 'CI/CD'] },
+    { cat: 'Core Fundamentals', items: ['DSA', 'DBMS', 'OOP', 'Operating Systems', 'AI / ML'] },
+    { cat: 'Tools & Cloud', items: ['Google Cloud', 'AWS', 'Git', 'GitHub', 'Canva'] }
+  ];
+
+  honors = ['3rd · Global AI Summit 2025', 'Google — Computer Networks', 'Google — Operating Systems', 'NPTEL — Software Engineering', 'Infosys — DSA'];
+
+  // ─────────────────────────────────────────────────────────────
+  state = { orbit: false, hovered: -1, selected: null, form: { name: '', email: '', message: '' }, errors: {}, sent: false };
+
+  componentDidMount() {
+    const root = this.rootEl || document;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; io.unobserve(e.target); }
+      });
+    }, { threshold: 0.14 });
+    root.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+
+    const proj = root.querySelector('#projects');
+    if (proj) {
+      const oio = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { this.setState({ orbit: true }); oio.disconnect(); } });
+      }, { threshold: 0.3 });
+      oio.observe(proj);
+    }
+  }
+
+  field(k) { return (e) => this.setState({ form: { ...this.state.form, [k]: e.target.value } }); }
+
+  submit = (e) => {
+    e.preventDefault();
+    const f = this.state.form; const errors = {};
+    if (!f.name.trim()) errors.name = 'Your name?';
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email)) errors.email = 'Valid email needed';
+    if (f.message.trim().length < 8) errors.message = 'A little more detail';
+    if (Object.keys(errors).length) { this.setState({ errors }); return; }
+    this.setState({ errors: {}, sent: true });
+  };
+
+  renderOrbit() {
+    const { orbit, hovered, selected } = this.state;
+    const n = this.projects.length, R = 210;
+    const ring = React.createElement('div', { key: 'ring', style: {
+      position: 'absolute', left: '50%', top: '50%', width: 2 * R, height: 2 * R, marginLeft: -R, marginTop: -R,
+      borderRadius: '50%', border: '1px dashed rgba(205,143,129,0.22)', transformOrigin: 'center center',
+      transform: orbit ? 'rotate(0deg)' : 'scale(0.2)',
+      opacity: orbit ? 1 : 0, transition: 'opacity .9s ease', animation: orbit ? 'taspin 60s linear infinite' : 'none'
+    } });
+
+    const hub = React.createElement('div', { key: 'hub', style: {
+      position: 'absolute', left: '50%', top: '50%', width: 118, height: 118, marginLeft: -59, marginTop: -59,
+      borderRadius: '50%', background: 'radial-gradient(circle at 30% 25%, #8c3542, #5c2530)',
+      border: '1px solid rgba(233,224,214,0.16)', display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center', zIndex: 2, boxShadow: '0 20px 60px -20px rgba(176,66,79,0.6)',
+      transform: orbit ? 'scale(1)' : 'scale(0)', transition: 'transform .8s cubic-bezier(.16,1,.3,1)'
+    } },
+      React.createElement('div', { style: { fontFamily: "'Instrument Serif',serif", fontSize: 34, color: '#f4ece0', lineHeight: 1 } }, String(n).padStart(2, '0')),
+      React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#e8c6bd', marginTop: 4 } }, 'Projects')
+    );
+
+    const nodes = this.projects.map((p, i) => {
+      const ang = (-90 + i * (360 / n)) * Math.PI / 180;
+      const x = Math.cos(ang) * R, y = Math.sin(ang) * R;
+      const active = selected === i, hov = hovered === i;
+      return React.createElement('button', {
+        key: i,
+        onClick: () => this.setState({ selected: i }),
+        onMouseEnter: () => this.setState({ hovered: i }),
+        onMouseLeave: () => this.setState({ hovered: -1 }),
+        style: {
+          position: 'absolute', left: '50%', top: '50%', width: 148, height: 148, marginLeft: -74, marginTop: -74,
+          borderRadius: '50%', cursor: 'pointer', zIndex: hov || active ? 5 : 3,
+          border: active ? '1px solid #cd8f81' : '1px solid rgba(233,224,214,0.14)',
+          background: active ? 'radial-gradient(circle at 30% 25%, #7a2e3a, #40222a)' : '#241a17',
+          color: '#ece3d6', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+          gap: 6, padding: 10, textAlign: 'center', fontFamily: "'Space Grotesk',sans-serif",
+          boxShadow: hov ? '0 24px 60px -18px rgba(176,66,79,0.7)' : '0 10px 30px -18px rgba(0,0,0,0.6)',
+          opacity: orbit ? 1 : 0,
+          transform: orbit ? `translate(${x}px, ${y}px) scale(${hov ? 1.12 : active ? 1.06 : 1})` : 'translate(0,0) scale(0.2)',
+          transition: `transform .9s cubic-bezier(.16,1,.3,1) ${0.12 + i * 0.1}s, opacity .7s ease ${0.12 + i * 0.1}s, box-shadow .35s ease, border-color .3s ease, background .3s ease`
+        }
+      },
+        React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: '#cd8f81', letterSpacing: '0.1em' } }, String(i + 1).padStart(2, '0')),
+        React.createElement('div', { style: { fontFamily: "'Instrument Serif',serif", fontSize: 22, lineHeight: 1, color: '#f4ece0' } }, p.short),
+        React.createElement('div', { style: { fontSize: 10.5, color: '#a89685', lineHeight: 1.25, maxWidth: 110 } }, p.tech[0])
+      );
+    });
+
+    return React.createElement('div', { key: 'orbit', style: {
+      position: 'relative', width: '100%', height: 620, maxWidth: 620, margin: '10px auto 0'
+    } }, ring, ...nodes, hub);
+  }
+
+  renderDetail() {
+    const { selected } = this.state;
+    if (selected === null) {
+      return React.createElement('div', { key: 'hint', style: {
+        textAlign: 'center', marginTop: 20, fontFamily: "'JetBrains Mono',monospace", fontSize: 12,
+        letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8a7768'
+      } }, '↑ tap a node to open its live preview');
+    }
+    const p = this.projects[selected];
+    const frameBody = p.liveUrl
+      ? React.createElement('iframe', { src: p.liveUrl, style: { width: '100%', height: 380, border: 'none', display: 'block', background: '#0e0a09' }, loading: 'lazy' })
+      : React.createElement('div', { style: {
+          height: 380, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10,
+          background: 'repeating-linear-gradient(135deg, #1a1210, #1a1210 12px, #1e1512 12px, #1e1512 24px)',
+          fontFamily: "'JetBrains Mono',monospace", color: '#8a7768', fontSize: 12, textAlign: 'center', padding: 24
+        } },
+        React.createElement('div', { style: { fontSize: 13, color: '#cd8f81', letterSpacing: '0.14em', textTransform: 'uppercase' } }, 'Live preview'),
+        React.createElement('div', { style: { maxWidth: 320, lineHeight: 1.6 } }, 'Add this project\u2019s deployed URL to embed a live, interactive frame here.')
+      );
+
+    const frame = React.createElement('div', { style: {
+      flex: '1 1 420px', minWidth: 300, borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(233,224,214,0.14)', background: '#120d0c'
+    } },
+      React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: 8, padding: '11px 14px', background: '#221815', borderBottom: '1px solid rgba(233,224,214,0.08)' } },
+        React.createElement('span', { style: { width: 10, height: 10, borderRadius: '50%', background: '#b0424f' } }),
+        React.createElement('span', { style: { width: 10, height: 10, borderRadius: '50%', background: '#cd8f81' } }),
+        React.createElement('span', { style: { width: 10, height: 10, borderRadius: '50%', background: '#5f4f47' } }),
+        React.createElement('div', { style: { marginLeft: 10, flex: 1, fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: '#8a7768', background: '#17100f', padding: '5px 12px', borderRadius: 999, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }, p.liveUrl || 'preview://' + p.short.toLowerCase())
+      ),
+      frameBody
+    );
+
+    const info = React.createElement('div', { style: { flex: '1 1 300px', minWidth: 260, display: 'flex', flexDirection: 'column' } },
+      React.createElement('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 } },
+        React.createElement('span', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: '#cd8f81', letterSpacing: '0.14em', textTransform: 'uppercase' } }, p.badge),
+        React.createElement('button', { onClick: () => this.setState({ selected: null }), style: { background: 'none', border: '1px solid rgba(233,224,214,0.2)', color: '#a89685', borderRadius: 999, width: 30, height: 30, cursor: 'pointer', fontSize: 15, lineHeight: 1 } }, '\u00d7')
+      ),
+      React.createElement('h3', { style: { fontFamily: "'Instrument Serif',serif", fontSize: 38, lineHeight: 1.02, color: '#f4ece0', margin: '14px 0 4px' } }, p.name),
+      React.createElement('div', { style: { color: '#cd8f81', fontSize: 14, marginBottom: 18 } }, p.sub),
+      ...p.points.map((pt, k) => React.createElement('p', { key: k, style: { color: '#c1b0a1', fontSize: 14, lineHeight: 1.55, marginBottom: 12, display: 'flex', gap: 10 } },
+        React.createElement('span', { style: { color: '#b0424f' } }, '\u2192'), pt)),
+      React.createElement('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 8, margin: '6px 0 20px' } },
+        ...p.tech.map((t, k) => React.createElement('span', { key: k, style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: '#a89685', border: '1px solid rgba(233,224,214,0.14)', padding: '5px 11px', borderRadius: 999 } }, t))),
+      React.createElement('div', { style: { display: 'flex', gap: 12, marginTop: 'auto' } },
+        React.createElement('a', { href: p.repoUrl || '#', style: { fontSize: 14, color: '#fdf6ee', background: '#b0424f', padding: '11px 20px', borderRadius: 999, textDecoration: 'none' } }, 'GitHub'),
+        p.liveUrl ? React.createElement('a', { href: p.liveUrl, target: '_blank', style: { fontSize: 14, color: '#ece3d6', padding: '11px 20px', border: '1px solid rgba(233,224,214,0.22)', borderRadius: 999, textDecoration: 'none' } }, 'Open live') : null
+      )
+    );
+
+    return React.createElement('div', { key: 'detail', style: {
+      display: 'flex', flexWrap: 'wrap', gap: 28, marginTop: 30, padding: 24, borderRadius: 20,
+      background: '#1c1412', border: '1px solid rgba(233,224,214,0.1)'
+    } }, frame, info);
+  }
+
+  renderVals() {
+    const f = this.state.form, err = this.state.errors;
+    const inputStyle = { width: '100%', background: '#17100f', border: '1px solid rgba(233,224,214,0.16)', borderRadius: 12, padding: '14px 16px', color: '#f4ece0', fontSize: 15, outline: 'none' };
+    const labelStyle = { display: 'block', fontFamily: "'JetBrains Mono',monospace", fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8a7768', marginBottom: 8 };
+    const errStyle = { color: '#e08a7d', fontSize: 12, marginTop: 6, fontFamily: "'JetBrains Mono',monospace" };
+
+    // Skills accordion-style rows
+    const skillsEl = this.skills.map((s, i) => React.createElement('div', {
+      key: i, 'data-reveal': '', style: {
+        opacity: 0, transform: 'translateY(20px)', transition: `opacity .7s ease ${i * 0.08}s, transform .7s ease ${i * 0.08}s`,
+        padding: '22px 0', borderTop: '1px solid rgba(233,224,214,0.1)'
+      }
+    },
+      React.createElement('div', { style: { display: 'flex', alignItems: 'baseline', gap: 14, marginBottom: 14 } },
+        React.createElement('span', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 12, color: '#b0424f' } }, '0' + (i + 1)),
+        React.createElement('h4', { style: { fontFamily: "'Space Grotesk',sans-serif", fontSize: 19, fontWeight: 600, color: '#f4ece0' } }, s.cat)),
+      React.createElement('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 10, paddingLeft: 28 } },
+        ...s.items.map((it, k) => React.createElement('span', { key: k, style: { fontSize: 14, color: '#c1b0a1', background: '#241a17', border: '1px solid rgba(233,224,214,0.1)', padding: '8px 15px', borderRadius: 999 } }, it)))
+    ));
+
+    // Journey timeline items — alternating
+    const journeyEl = this.journey.map((j, i) => {
+      const left = i % 2 === 0;
+      const dotColor = j.type === 'work' ? '#b0424f' : j.type === 'edu' ? '#cd8f81' : '#d9c9b8';
+      const card = React.createElement('div', { style: { flex: 1, minWidth: 0 } },
+        React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 12, letterSpacing: '0.1em', color: '#cd8f81', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8, justifyContent: left ? 'flex-start' : 'flex-start' } },
+          j.date,
+          j.ongoing ? React.createElement('span', { style: { fontSize: 10, color: '#fdf6ee', background: '#b0424f', padding: '2px 8px', borderRadius: 999, letterSpacing: '0.08em' } }, 'ONGOING') : null),
+        React.createElement('h3', { style: { fontFamily: "'Instrument Serif',serif", fontSize: 26, lineHeight: 1.1, color: '#f4ece0' } }, j.title),
+        React.createElement('div', { style: { color: '#a89685', fontSize: 14, margin: '4px 0 10px' } }, j.org),
+        React.createElement('p', { style: { color: '#b3a294', fontSize: 14.5, lineHeight: 1.55, maxWidth: 460 } }, j.desc)
+      );
+      const dot = React.createElement('div', { style: { position: 'relative', flexShrink: 0, width: 16, display: 'flex', justifyContent: 'center' } },
+        React.createElement('span', { style: { width: 15, height: 15, borderRadius: '50%', background: dotColor, border: '3px solid #17100f', animation: j.ongoing ? 'tapulse 2.2s ease-out infinite' : 'none' } }));
+      return React.createElement('div', {
+        key: i, 'data-reveal': '', style: {
+          opacity: 0, transform: 'translateY(30px)', transition: 'opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1)',
+          display: 'flex', alignItems: 'flex-start', gap: 20,
+          flexDirection: 'row',
+          textAlign: 'left'
+        }
+      },
+        // desktop alternation via media isn't inline-simple; keep left-rail consistent for robustness
+        dot, card);
+    });
+
+    const honorsEl = this.honors.map((h, i) => React.createElement('span', { key: i, style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 12, color: '#c1b0a1', border: '1px solid rgba(233,224,214,0.12)', padding: '7px 13px', borderRadius: 999 } }, h));
+
+    const marqueeWords = ['Python', 'FastAPI', 'PyTorch', 'React', 'YOLO', 'MongoDB', 'GCP', 'Three.js', 'AI / ML', 'Next.js'];
+    const marqueeRow = [...marqueeWords, ...marqueeWords].map((w, i) => React.createElement('span', { key: i, style: { display: 'flex', alignItems: 'center', gap: 44, whiteSpace: 'nowrap' } }, w, React.createElement('span', { style: { color: '#b0424f', fontSize: 20 } }, '\u2726')));
+    const marqueeEl = React.createElement(React.Fragment, null, ...marqueeRow);
+
+    const contactForm = this.state.sent
+      ? React.createElement('div', { style: { padding: 40, borderRadius: 20, background: '#1c1412', border: '1px solid rgba(205,143,129,0.3)', textAlign: 'center' } },
+          React.createElement('div', { style: { width: 54, height: 54, borderRadius: '50%', background: '#b0424f', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 18px', fontSize: 24, color: '#fdf6ee' } }, '\u2713'),
+          React.createElement('h3', { style: { fontFamily: "'Instrument Serif',serif", fontSize: 30, color: '#f4ece0', marginBottom: 8 } }, 'Message sent'),
+          React.createElement('p', { style: { color: '#a89685', fontSize: 15 } }, 'Thanks, ' + (f.name || 'friend') + ' \u2014 I\u2019ll get back to you soon.'))
+      : React.createElement('form', { onSubmit: this.submit, style: { display: 'flex', flexDirection: 'column', gap: 18, padding: 28, borderRadius: 20, background: '#1c1412', border: '1px solid rgba(233,224,214,0.1)' } },
+          React.createElement('div', null,
+            React.createElement('label', { style: labelStyle }, 'Name'),
+            React.createElement('input', { value: f.name, onChange: this.field('name'), placeholder: 'Your name', style: inputStyle }),
+            err.name ? React.createElement('div', { style: errStyle }, err.name) : null),
+          React.createElement('div', null,
+            React.createElement('label', { style: labelStyle }, 'Email'),
+            React.createElement('input', { value: f.email, onChange: this.field('email'), placeholder: 'you@email.com', style: inputStyle }),
+            err.email ? React.createElement('div', { style: errStyle }, err.email) : null),
+          React.createElement('div', null,
+            React.createElement('label', { style: labelStyle }, 'Message'),
+            React.createElement('textarea', { value: f.message, onChange: this.field('message'), placeholder: 'Tell me about your idea\u2026', rows: 4, style: { ...inputStyle, resize: 'vertical', minHeight: 110 } }),
+            err.message ? React.createElement('div', { style: errStyle }, err.message) : null),
+          React.createElement('button', { type: 'submit', style: { marginTop: 4, background: '#b0424f', color: '#fdf6ee', border: 'none', borderRadius: 999, padding: '15px', fontSize: 15, fontWeight: 500, cursor: 'pointer', fontFamily: "'Space Grotesk',sans-serif" } }, 'Send message \u2192')
+        );
+
+    return {
+      setRoot: (el) => { this.rootEl = el; },
+      projectsUI: React.createElement(React.Fragment, null, this.renderOrbit(), this.renderDetail()),
+      skillsEl, journeyEl, honorsEl, marqueeEl, contactForm
+    };
+  }
+}
+</script>
+</body>
+</html>

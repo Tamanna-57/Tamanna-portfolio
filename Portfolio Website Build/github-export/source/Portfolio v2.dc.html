@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #030710; color: #dbe7f5; font-family: 'Space Grotesk', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  ::selection { background: #38bdf8; color: #030710; }
+  input, textarea { font-family: inherit; }
+  @keyframes tadraw { to { stroke-dashoffset: 0; } }
+  @keyframes tadotin { to { opacity: 1; } }
+  @keyframes tacorein { from { opacity: 0; transform: scale(0.2); } to { opacity: 1; transform: scale(1); } }
+  @keyframes taburst { from { opacity: 0.9; transform: scale(0.3); } to { opacity: 0; transform: scale(7); } }
+  @keyframes taopen { from { clip-path: circle(125% at 50% 50%); } to { clip-path: circle(0% at 50% 50%); } }
+  @keyframes taspin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes tapulse { 0%,100% { box-shadow: 0 0 0 0 rgba(56,189,248,0.5); } 50% { box-shadow: 0 0 0 10px rgba(56,189,248,0); } }
+  @keyframes tafloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  @keyframes tamarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes tablink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#030710"/><text x="50" y="58" text-anchor="middle" font-family="monospace" font-size="26" fill="#38bdf8">TA</text></svg></template>
+<div ref="{{ setRoot }}" style="position:relative; width:100%; max-width:100vw; background:#030710;">
+
+  {{ preloaderEl }}
+
+  <nav style="position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,5vw,64px); backdrop-filter:blur(14px); background:linear-gradient(180deg, rgba(3,7,16,0.9), rgba(3,7,16,0));">
+    <a href="#hero" style="font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:0.1em; color:#7dd3fc; text-decoration:none; display:flex; align-items:center; gap:10px;">
+      <span style="width:8px; height:8px; border-radius:50%; background:#22d3ee; display:inline-block; animation:tapulse 2.4s ease-out infinite;"></span>&lt;TA /&gt;
+    </a>
+    <div style="display:flex; align-items:center; gap:clamp(14px,2.4vw,32px);">
+      <a href="#journey" style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8fa3bb; text-decoration:none; letter-spacing:0.06em;">journey</a>
+      <a href="#projects" style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8fa3bb; text-decoration:none; letter-spacing:0.06em;">projects</a>
+      <a href="#skills" style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#8fa3bb; text-decoration:none; letter-spacing:0.06em;">skills</a>
+      <a href="#contact" style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#030710; background:#38bdf8; text-decoration:none; padding:9px 18px; border-radius:4px; white-space:nowrap; font-weight:600;">let's_talk</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" data-screen-label="Hero" style="position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:130px clamp(20px,5vw,64px) 70px; overflow:hidden;">
+    {{ heroCircuitEl }}
+    <div style="position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(56,189,248,0.025) 0 1px, transparent 1px 4px); pointer-events:none;"></div>
+    <div style="position:absolute; top:-14%; right:-10%; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(14,165,233,0.16), transparent 62%); filter:blur(22px); pointer-events:none; animation:tafloat 10s ease-in-out infinite;"></div>
+
+    <div style="position:relative; max-width:1240px; margin:0 auto; width:100%;">
+      <!-- HUD corner brackets -->
+      <div style="position:absolute; top:-26px; left:-18px; width:34px; height:34px; border-top:2px solid #38bdf8; border-left:2px solid #38bdf8; opacity:0.8;"></div>
+      <div style="position:absolute; top:-26px; right:-18px; width:34px; height:34px; border-top:2px solid rgba(56,189,248,0.35); border-right:2px solid rgba(56,189,248,0.35);"></div>
+      <div style="position:absolute; bottom:-26px; left:-18px; width:34px; height:34px; border-bottom:2px solid rgba(56,189,248,0.35); border-left:2px solid rgba(56,189,248,0.35);"></div>
+      <div style="position:absolute; bottom:-26px; right:-18px; width:34px; height:34px; border-bottom:2px solid #38bdf8; border-right:2px solid #38bdf8; opacity:0.8;"></div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:clamp(36px,5vw,70px); align-items:center;">
+        <div>
+          <div data-reveal style="opacity:0; transform:translateY(22px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:#22d3ee; display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="width:34px; height:1px; background:#22d3ee; display:inline-block;"></span>AI/ML Engineer × Backend
+          </div>
+          <h1 data-reveal style="opacity:0; transform:translateY(28px); transition:opacity 1s cubic-bezier(.16,1,.3,1) .08s, transform 1s cubic-bezier(.16,1,.3,1) .08s; font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:clamp(46px,7.2vw,104px); line-height:1.0; letter-spacing:0.01em; color:#eaf4ff; text-transform:uppercase;">
+            Tamanna<br><span style="color:#38bdf8; text-shadow:0 0 34px rgba(56,189,248,0.45);">Arora</span>
+          </h1>
+          <p data-reveal style="opacity:0; transform:translateY(20px); transition:opacity .9s ease .18s, transform .9s ease .18s; max-width:480px; font-size:clamp(16px,1.4vw,19px); line-height:1.6; color:#8fa3bb; margin-top:26px;">
+            I build <span style="color:#dbe7f5;">intelligent systems</span> — vision models, real-time pipelines, and the <span style="color:#dbe7f5;">resilient backends</span> that keep them alive in production.
+          </p>
+          <div data-reveal style="opacity:0; transform:translateY(20px); transition:opacity .9s ease .26s, transform .9s ease .26s; display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;">
+            <a href="#projects" style="font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:600; color:#030710; background:#38bdf8; padding:14px 26px; border-radius:4px; text-decoration:none; box-shadow:0 0 30px -6px rgba(56,189,248,0.55);">./view_projects</a>
+            <a href="#contact" style="font-family:'JetBrains Mono',monospace; font-size:14px; color:#7dd3fc; padding:14px 26px; border:1px solid rgba(56,189,248,0.35); border-radius:4px; text-decoration:none;">./lets_talk</a>
+          </div>
+        </div>
+
+        <div data-reveal style="opacity:0; transform:translateY(26px); transition:opacity 1s ease .3s, transform 1s ease .3s;">
+          {{ terminalEl }}
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(56,189,248,0.14); border:1px solid rgba(56,189,248,0.14); margin-top:18px;">
+            <div style="background:#060d1a; padding:16px 18px;"><div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:#456; margin-bottom:5px; text-transform:uppercase; color:#5b7290;">GPA</div><div style="font-family:'Chakra Petch',sans-serif; font-size:19px; color:#eaf4ff;">8.54<span style="color:#38bdf8;">/10</span></div></div>
+            <div style="background:#060d1a; padding:16px 18px;"><div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:#5b7290; margin-bottom:5px; text-transform:uppercase;">Focus</div><div style="font-family:'Chakra Petch',sans-serif; font-size:19px; color:#eaf4ff;">AI / ML</div></div>
+            <div style="background:#060d1a; padding:16px 18px;"><div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:#5b7290; margin-bottom:5px; text-transform:uppercase;">Base</div><div style="font-family:'Chakra Petch',sans-serif; font-size:19px; color:#eaf4ff;">Delhi, IN</div></div>
+            <div style="background:#060d1a; padding:16px 18px;"><div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.16em; color:#5b7290; margin-bottom:5px; text-transform:uppercase;">Now</div><div style="font-family:'Chakra Petch',sans-serif; font-size:19px; color:#22d3ee;">@Lehar</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div style="overflow:hidden; border-top:1px solid rgba(56,189,248,0.12); border-bottom:1px solid rgba(56,189,248,0.12); padding:18px 0; background:#050b16;">
+    <div style="display:flex; width:max-content; animation:tamarquee 28s linear infinite; font-family:'Chakra Petch',sans-serif; font-size:26px; font-weight:600; color:#33506e; gap:40px; text-transform:uppercase; letter-spacing:0.06em;">
+      {{ marqueeEl }}
+    </div>
+  </div>
+
+  <!-- ============ JOURNEY ============ -->
+  <section id="journey" data-screen-label="Journey" style="position:relative; padding:clamp(90px,12vh,150px) clamp(20px,5vw,64px); max-width:1240px; margin:0 auto;">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:64px;">
+      <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:clamp(34px,5vw,64px); line-height:1; color:#eaf4ff; text-transform:uppercase;">My_<span style="color:#38bdf8;">Journey</span></h2>
+      <span data-reveal style="opacity:0; transition:opacity .8s ease .2s; font-family:'JetBrains Mono',monospace; font-size:13px; color:#5b7290; letter-spacing:0.14em;">// 2021 → PRESENT</span>
+    </div>
+
+    <div style="position:relative;">
+      <div style="position:absolute; left:7px; top:6px; bottom:6px; width:1px; background:linear-gradient(180deg, #22d3ee, rgba(56,189,248,0.35) 30%, rgba(56,189,248,0.08));"></div>
+      <div style="display:flex; flex-direction:column; gap:clamp(38px,6vh,64px);">
+        {{ journeyEl }}
+      </div>
+    </div>
+
+    <div data-reveal style="opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease; margin-top:60px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#5b7290; margin-right:8px;">// recognition</span>
+      {{ honorsEl }}
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" data-screen-label="Projects" style="position:relative; padding:clamp(80px,10vh,130px) clamp(20px,5vw,64px) clamp(90px,12vh,150px); overflow:hidden; background:#050b16; border-top:1px solid rgba(56,189,248,0.1); border-bottom:1px solid rgba(56,189,248,0.1);">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:16px;">
+        <span data-reveal style="opacity:0; transition:opacity .8s ease; font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:#22d3ee;">// selected_work</span>
+        <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .8s ease .1s, transform .8s ease .1s; font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:clamp(34px,5vw,64px); line-height:1.04; color:#eaf4ff; margin-top:12px; text-transform:uppercase;">Project_<span style="color:#38bdf8;">Radar</span></h2>
+        <p style="max-width:430px; margin:14px auto 0; color:#8fa3bb; font-size:15px; line-height:1.5;">Each node is a live system. Hover to lift it off the grid — tap to open its embedded preview.</p>
+      </div>
+      {{ projectsUI }}
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" data-screen-label="Skills" style="position:relative; padding:clamp(80px,10vh,130px) clamp(20px,5vw,64px);">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:54px;">
+        <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:clamp(34px,5vw,64px); line-height:1; color:#eaf4ff; text-transform:uppercase;">System_<span style="color:#38bdf8;">Modules</span></h2>
+        <span data-reveal style="opacity:0; transition:opacity .8s ease .2s; font-family:'JetBrains Mono',monospace; font-size:13px; color:#5b7290; letter-spacing:0.14em;">// tools I ship with</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px;">
+        {{ skillsEl }}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" data-screen-label="Contact" style="position:relative; padding:clamp(90px,12vh,160px) clamp(20px,5vw,64px) 60px; overflow:hidden; background:#050b16; border-top:1px solid rgba(56,189,248,0.1);">
+    {{ contactCircuitEl }}
+    <div style="position:relative; max-width:1140px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(40px,5vw,80px); align-items:start;">
+      <div>
+        <span data-reveal style="opacity:0; transition:opacity .8s ease; font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:#22d3ee;">// open_channel</span>
+        <h2 data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .8s ease .1s, transform .8s ease .1s; font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:clamp(38px,5.4vw,74px); line-height:1.02; color:#eaf4ff; margin:14px 0 26px; text-transform:uppercase;">Let's build<br><span style="color:#38bdf8; text-shadow:0 0 30px rgba(56,189,248,0.4);">something.</span></h2>
+        <div style="display:flex; flex-direction:column; gap:14px; font-family:'JetBrains Mono',monospace; font-size:14px;">
+          <a href="mailto:tamannaarora9313@gmail.com" style="color:#dbe7f5; text-decoration:none; display:flex; align-items:center; gap:12px;"><span style="color:#38bdf8;">01</span> tamannaarora9313@gmail.com</a>
+          <a href="tel:+917015627741" style="color:#dbe7f5; text-decoration:none; display:flex; align-items:center; gap:12px;"><span style="color:#38bdf8;">02</span> +91 70156 27741</a>
+          <div style="display:flex; gap:18px; margin-top:8px; padding-top:16px; border-top:1px solid rgba(56,189,248,0.14);">
+            <a href="#" style="color:#7dd3fc; text-decoration:none;">LinkedIn ↗</a>
+            <a href="#" style="color:#7dd3fc; text-decoration:none;">GitHub ↗</a>
+            <a href="#" style="color:#7dd3fc; text-decoration:none;">LeetCode ↗</a>
+          </div>
+        </div>
+      </div>
+      <div data-reveal style="opacity:0; transform:translateY(28px); transition:opacity .9s ease, transform .9s ease;">
+        {{ contactForm }}
+      </div>
+    </div>
+    <div style="position:relative; max-width:1140px; margin:clamp(70px,10vh,110px) auto 0; padding-top:24px; border-top:1px solid rgba(56,189,248,0.12); display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.08em; color:#5b7290;">
+      <span>© 2026 TAMANNA ARORA</span>
+      <span>engineered, not templated_</span>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;showIntro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;},&quot;radarSweep&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  // ─────────────────────────────────────────────────────────────
+  //  EDIT HERE — plug in real links / screenshots / details later
+  // ─────────────────────────────────────────────────────────────
+  projects = [
+    {
+      short: 'TerraViT',
+      name: 'TerraViT',
+      sub: 'AI-Powered Climate Intelligence',
+      tech: ['Vision Transformers', 'FastAPI', 'PyTorch', 'Next.js'],
+      badge: '3rd · Global AI Summit 2025',
+      liveUrl: '',            // ← paste deployed URL to embed a live preview
+      repoUrl: '',            // ← paste GitHub URL
+      points: [
+        'End-to-end climate monitoring using Vision Transformers on geospatial satellite imagery to detect and explain environmental change.',
+        'FastAPI + PyTorch inference backend with an interactive Next.js frontend visualizing predictions, temporal shifts, and attention-based insight.'
+      ]
+    },
+    {
+      short: 'TrafficAI',
+      name: 'Multi-Violation Traffic Monitoring',
+      sub: 'Real-time computer vision at 285 FPS',
+      tech: ['YOLO', 'PaddleOCR', 'OpenCV', 'Roboflow'],
+      badge: 'Deployed',
+      liveUrl: '',
+      repoUrl: '',
+      points: [
+        '4 YOLO detection pipelines — helmet, illegal parking, driver monitoring, signal violations — at 85–99.8% mAP@50; parking model hit 99.8% precision at 285 FPS.',
+        '8-class violation detector on 6,724 images + a multi-task driver model (drowsiness, distraction, seatbelt) at 92.1% mAP@50 with PaddleOCR plate extraction.'
+      ]
+    },
+    {
+      short: 'SafeNet',
+      name: 'SafeNet',
+      sub: 'Disaster Awareness Safety Platform · SIH',
+      tech: ['TypeScript', 'Node.js', 'MongoDB', 'Geospatial APIs'],
+      badge: 'Smart India Hackathon',
+      liveUrl: '',
+      repoUrl: '',
+      points: [
+        'Multi-dashboard platform improving disaster awareness for students, with separate portals for students, teachers, parents, and admins.',
+        'Age-specific learning modules, real-time monitoring, and secure auth, integrating disaster-prediction APIs and geospatial data.'
+      ]
+    }
+  ];
+
+  journey = [
+    { date: 'Feb 2026 — Present', title: 'Software Development Engineer Intern', org: 'Lehar Technologies · Remote', type: 'work', ongoing: true,
+      desc: 'Architecting 10+ interconnected MES portals, real-time IoT pipelines over MQTT from 14+ press machines, and full GCP backend deployment — plus client sites with self-serve admin panels and a Three.js 3D model.' },
+    { date: '2025 — 2026', title: 'General Secretary · Media Head', org: 'ACM Research Chapter (NY) · Uphoria Fest', type: 'role',
+      desc: 'Led research-focused initiatives, technical events, and team operations; drove content, digital promotion, and event visibility.' },
+    { date: 'July 2024 — 2028', title: 'B.Tech, Computer Science (AI/ML)', org: 'Bennett University · Delhi', type: 'edu',
+      desc: 'GPA 8.54 / 10. Core focus across AI/ML, DBMS, OOP, and operating systems alongside applied full-stack engineering.' },
+    { date: '2021 — 2024', title: 'Senior Secondary · Schooling', org: 'SGMS Delhi & SDVM Panipat · CBSE', type: 'edu',
+      desc: 'Class XII — 80% · Class X — 95%.' }
+  ];
+
+  skills = [
+    { cat: 'Languages', items: ['Python', 'Java', 'C / C++', 'JavaScript'] },
+    { cat: 'Frameworks & Tech', items: ['React.js', 'Tailwind', 'Flask', 'FastAPI', 'MongoDB', 'MySQL', 'CI/CD'] },
+    { cat: 'Core Fundamentals', items: ['DSA', 'DBMS', 'OOP', 'Operating Systems', 'AI / ML'] },
+    { cat: 'Tools & Cloud', items: ['Google Cloud', 'AWS', 'Git', 'GitHub', 'Canva'] }
+  ];
+
+  honors = ['3rd · Global AI Summit 2025', 'Google — Computer Networks', 'Google — Operating Systems', 'NPTEL — Software Engineering', 'Infosys — DSA'];
+
+  terminalLines = [
+    { p: '$', c: 'whoami' },
+    { p: '>', c: 'tamanna.arora — CS undergrad, AI/ML', dim: true },
+    { p: '$', c: 'stack --top' },
+    { p: '>', c: 'python · fastapi · pytorch · react', dim: true },
+    { p: '$', c: 'status' },
+    { p: '>', c: 'SDE intern @ Lehar Technologies', dim: true, cursor: true }
+  ];
+
+  // ─────────────────────────────────────────────────────────────
+  state = { phase: 'draw', introDone: false, orbit: false, hovered: -1, selected: null,
+            form: { name: '', email: '', message: '' }, errors: {}, sent: false, focus: '', orbitScale: 1 };
+
+  componentDidMount() {
+    if (this._mounted) return; this._mounted = true;
+    if (this.props.showIntro ?? true) {
+      document.body.style.overflow = 'hidden';
+      this._t1 = setTimeout(() => this.setState({ phase: 'open' }), 2400);
+      this._t2 = setTimeout(() => this.finishIntro(), 3350);
+    } else {
+      this.finishIntro();
+    }
+  }
+
+  finishIntro = () => {
+    clearTimeout(this._t1); clearTimeout(this._t2);
+    document.body.style.overflow = '';
+    if (!this.state.introDone) this.setState({ introDone: true });
+    requestAnimationFrame(() => this.setupObservers());
+  };
+
+  setupObservers() {
+    if (this._observed) return; this._observed = true;
+    const root = this.rootEl || document;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'none'; io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    root.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+
+    const proj = root.querySelector('#projects');
+    if (proj) {
+      const oio = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { this.setState({ orbit: true }); oio.disconnect(); } });
+      }, { threshold: 0.25 });
+      oio.observe(proj);
+    }
+    const fit = () => {
+      const w = Math.min(window.innerWidth - 40, 640);
+      this.setState({ orbitScale: Math.min(1, w / 640) });
+    };
+    fit(); window.addEventListener('resize', fit);
+  }
+
+  // ── Preloader circuit traces ────────────────────────────────
+  genTraces() {
+    if (this._traces) return this._traces;
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+    const colors = ['#38bdf8', '#22d3ee', '#0ea5e9', '#7dd3fc'];
+    const W = 1440, H = 900, cx = W / 2, cy = H / 2;
+    const traces = [];
+    const mk = (side, i, count) => {
+      const horiz = side === 'L' || side === 'R';
+      const dir = (side === 'L' || side === 'T') ? 1 : -1;
+      let pts;
+      if (horiz) {
+        const y0 = 30 + (H - 60) * (i / (count - 1)) + rnd(-18, 18);
+        const x0 = side === 'L' ? 0 : W;
+        const xEnd = cx - dir * rnd(130, 320);
+        const x1 = x0 + dir * rnd(90, Math.max(120, Math.abs(xEnd - x0) * 0.55));
+        const yEnd = cy + rnd(-190, 190);
+        pts = [[x0, y0], [x1, y0], [x1, yEnd], [xEnd, yEnd]];
+      } else {
+        const x0v = 30 + (W - 60) * (i / (count - 1)) + rnd(-22, 22);
+        const y0 = side === 'T' ? 0 : H;
+        const yEnd = cy - dir * rnd(120, 280);
+        const y1 = y0 + dir * rnd(80, Math.max(110, Math.abs(yEnd - y0) * 0.55));
+        const xEnd = cx + rnd(-260, 260);
+        pts = [[x0v, y0], [x0v, y1], [xEnd, y1], [xEnd, yEnd]];
+      }
+      let len = 0;
+      for (let k = 1; k < pts.length; k++) len += Math.abs(pts[k][0] - pts[k-1][0]) + Math.abs(pts[k][1] - pts[k-1][1]);
+      const bright = Math.random() > 0.55;
+      return {
+        pts: pts.map(p => p.join(',')).join(' '),
+        end: pts[pts.length - 1],
+        len,
+        color: pick(colors),
+        alpha: bright ? rnd(0.65, 0.95) : rnd(0.2, 0.45),
+        w: bright ? rnd(1.4, 2) : 1,
+        dot: bright ? rnd(3, 4.5) : rnd(1.8, 2.6),
+        dur: rnd(0.9, 1.6),
+        delay: rnd(0, 0.75)
+      };
+    };
+    ['L', 'R'].forEach(s => { for (let i = 0; i < 13; i++) traces.push(mk(s, i, 13)); });
+    ['T', 'B'].forEach(s => { for (let i = 0; i < 17; i++) traces.push(mk(s, i, 17)); });
+    this._traces = traces;
+    return traces;
+  }
+
+  hexToRgba(hex, a) {
+    const n = parseInt(hex.slice(1), 16);
+    return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+  }
+
+  renderPreloader() {
+    if (this.state.introDone || !(this.props.showIntro ?? true)) return null;
+    const { phase } = this.state;
+    const traces = this.genTraces();
+    const svgKids = [];
+    traces.forEach((t, i) => {
+      svgKids.push(React.createElement('polyline', {
+        key: 'l' + i, points: t.pts, fill: 'none',
+        stroke: this.hexToRgba(t.color, t.alpha), strokeWidth: t.w,
+        strokeDasharray: t.len, strokeDashoffset: t.len,
+        style: { animation: `tadraw ${t.dur}s cubic-bezier(.25,1,.4,1) ${t.delay}s forwards` }
+      }));
+      svgKids.push(React.createElement('circle', {
+        key: 'h' + i, cx: t.end[0], cy: t.end[1], r: t.dot * 2.4,
+        fill: this.hexToRgba(t.color, Math.min(0.22, t.alpha * 0.3)), opacity: 0,
+        style: { animation: `tadotin .4s ease ${(t.delay + t.dur - 0.12).toFixed(2)}s forwards` }
+      }));
+      svgKids.push(React.createElement('circle', {
+        key: 'd' + i, cx: t.end[0], cy: t.end[1], r: t.dot,
+        fill: this.hexToRgba(t.color, Math.min(1, t.alpha + 0.3)), opacity: 0,
+        style: { animation: `tadotin .4s ease ${(t.delay + t.dur - 0.12).toFixed(2)}s forwards` }
+      }));
+    });
+
+    return React.createElement('div', {
+      onClick: this.finishIntro,
+      style: {
+        position: 'fixed', inset: 0, zIndex: 100, background: '#02050c', cursor: 'pointer',
+        animation: phase === 'open' ? 'taopen .95s cubic-bezier(.7,0,.84,0) forwards' : 'none',
+        overflow: 'hidden'
+      }
+    },
+      React.createElement('div', { style: { position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, rgba(14,42,74,0.55), transparent 65%)' } }),
+      React.createElement('svg', { viewBox: '0 0 1440 900', preserveAspectRatio: 'xMidYMid slice', style: { position: 'absolute', inset: 0, width: '100%', height: '100%' } }, ...svgKids),
+      // core
+      React.createElement('div', { style: {
+        position: 'absolute', left: '50%', top: '50%', width: 150, height: 150, marginLeft: -75, marginTop: -75,
+        opacity: 0, animation: 'tacorein .7s cubic-bezier(.16,1,.3,1) 1.55s forwards'
+      } },
+        React.createElement('div', { style: { position: 'absolute', inset: 0, borderRadius: '50%', border: '1px dashed rgba(56,189,248,0.6)', animation: 'taspin 9s linear infinite' } }),
+        React.createElement('div', { style: { position: 'absolute', inset: 14, borderRadius: '50%', border: '1px solid rgba(34,211,238,0.4)', background: 'radial-gradient(circle at 35% 30%, rgba(14,60,102,0.9), rgba(3,10,22,0.95))', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 4, boxShadow: '0 0 60px -8px rgba(56,189,248,0.65)' } },
+          React.createElement('div', { style: { fontFamily: "'Chakra Petch',sans-serif", fontWeight: 700, fontSize: 30, color: '#eaf4ff', letterSpacing: '0.08em' } }, 'TA'),
+          React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 8.5, letterSpacing: '0.28em', color: '#22d3ee' } }, 'SYSTEM'))
+      ),
+      phase === 'open' ? React.createElement('div', { style: {
+        position: 'absolute', left: '50%', top: '50%', width: 150, height: 150, marginLeft: -75, marginTop: -75,
+        borderRadius: '50%', border: '2px solid rgba(34,211,238,0.8)', animation: 'taburst .8s ease-out forwards'
+      } }) : null,
+      React.createElement('div', { style: {
+        position: 'absolute', bottom: 34, left: 0, right: 0, textAlign: 'center',
+        fontFamily: "'JetBrains Mono',monospace", fontSize: 11, letterSpacing: '0.3em', color: '#3d5a7a', textTransform: 'uppercase'
+      } }, phase === 'open' ? 'ACCESS GRANTED' : 'INITIALIZING SYSTEM — CLICK TO SKIP')
+    );
+  }
+
+  // ── Ambient circuit background (static, faint) ──────────────
+  genAmbient(seedKey, count) {
+    this._amb = this._amb || {};
+    if (this._amb[seedKey]) return this._amb[seedKey];
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const W = 1440, H = 900;
+    const els = [];
+    for (let i = 0; i < count; i++) {
+      const x0 = rnd(0, W), y0 = rnd(0, H);
+      const l1 = rnd(60, 220) * (Math.random() > 0.5 ? 1 : -1);
+      const l2 = rnd(40, 160) * (Math.random() > 0.5 ? 1 : -1);
+      const horizFirst = Math.random() > 0.5;
+      const pts = horizFirst
+        ? `${x0},${y0} ${x0 + l1},${y0} ${x0 + l1},${y0 + l2}`
+        : `${x0},${y0} ${x0},${y0 + l1} ${x0 + l2},${y0 + l1}`;
+      const endX = horizFirst ? x0 + l1 : x0 + l2;
+      const endY = horizFirst ? y0 + l2 : y0 + l1;
+      const a = rnd(0.05, 0.16);
+      els.push(React.createElement('polyline', { key: 'a' + i, points: pts, fill: 'none', stroke: `rgba(56,189,248,${a})`, strokeWidth: 1 }));
+      els.push(React.createElement('circle', { key: 'ad' + i, cx: endX, cy: endY, r: rnd(1.5, 3), fill: `rgba(34,211,238,${a + 0.1})` }));
+    }
+    const svg = React.createElement('svg', { viewBox: '0 0 1440 900', preserveAspectRatio: 'xMidYMid slice', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' } }, ...els);
+    this._amb[seedKey] = svg;
+    return svg;
+  }
+
+  // ── Terminal card ────────────────────────────────────────────
+  renderTerminal() {
+    const rows = this.terminalLines.map((l, i) => React.createElement('div', { key: i, style: { display: 'flex', gap: 10, lineHeight: 1.75 } },
+      React.createElement('span', { style: { color: l.p === '$' ? '#22d3ee' : '#3d5a7a', flexShrink: 0 } }, l.p),
+      React.createElement('span', { style: { color: l.dim ? '#8fa3bb' : '#dbe7f5' } }, l.c,
+        l.cursor ? React.createElement('span', { style: { display: 'inline-block', width: 8, height: 14, background: '#38bdf8', marginLeft: 6, verticalAlign: 'middle', animation: 'tablink 1.1s steps(1) infinite' } }) : null)
+    ));
+    return React.createElement('div', { style: { border: '1px solid rgba(56,189,248,0.2)', background: '#060d1a', boxShadow: '0 24px 70px -30px rgba(14,165,233,0.35)' } },
+      React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: 7, padding: '10px 14px', borderBottom: '1px solid rgba(56,189,248,0.14)', background: '#081020' } },
+        React.createElement('span', { style: { width: 9, height: 9, borderRadius: '50%', background: '#1e3a5f' } }),
+        React.createElement('span', { style: { width: 9, height: 9, borderRadius: '50%', background: '#1e3a5f' } }),
+        React.createElement('span', { style: { width: 9, height: 9, borderRadius: '50%', background: '#22d3ee' } }),
+        React.createElement('span', { style: { marginLeft: 8, fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: '#5b7290' } }, 'tamanna@portfolio:~')),
+      React.createElement('div', { style: { padding: '16px 18px', fontFamily: "'JetBrains Mono',monospace", fontSize: 13 } }, ...rows));
+  }
+
+  // ── Projects radar ───────────────────────────────────────────
+  renderOrbit() {
+    const { orbit, hovered, selected, orbitScale } = this.state;
+    const n = this.projects.length, R = 205;
+
+    const sweep = (this.props.radarSweep ?? true) === false ? null : React.createElement('div', { key: 'sweep', style: {
+      position: 'absolute', left: '50%', top: '50%', width: 2 * R, height: 2 * R, marginLeft: -R, marginTop: -R,
+      borderRadius: '50%', background: 'conic-gradient(from 0deg, rgba(56,189,248,0.16), transparent 75deg)',
+      opacity: orbit ? 1 : 0, transition: 'opacity 1.2s ease .4s', animation: 'taspin 5.5s linear infinite'
+    } });
+    const ring = React.createElement('div', { key: 'ring', style: {
+      position: 'absolute', left: '50%', top: '50%', width: 2 * R, height: 2 * R, marginLeft: -R, marginTop: -R,
+      borderRadius: '50%', border: '1px dashed rgba(56,189,248,0.3)',
+      opacity: orbit ? 1 : 0, transition: 'opacity .9s ease', animation: 'taspin 70s linear infinite'
+    } });
+    const ring2 = React.createElement('div', { key: 'ring2', style: {
+      position: 'absolute', left: '50%', top: '50%', width: 2 * R + 88, height: 2 * R + 88, marginLeft: -R - 44, marginTop: -R - 44,
+      borderRadius: '50%', border: '1px solid rgba(56,189,248,0.08)',
+      opacity: orbit ? 1 : 0, transition: 'opacity 1.2s ease .3s'
+    } });
+
+    const hub = React.createElement('div', { key: 'hub', style: {
+      position: 'absolute', left: '50%', top: '50%', width: 118, height: 118, marginLeft: -59, marginTop: -59,
+      borderRadius: '50%', background: 'radial-gradient(circle at 32% 28%, #0c2e52, #071426)',
+      border: '1px solid rgba(34,211,238,0.4)', display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center', zIndex: 2, boxShadow: '0 0 70px -12px rgba(56,189,248,0.7)',
+      transform: orbit ? 'scale(1)' : 'scale(0)', transition: 'transform .8s cubic-bezier(.16,1,.3,1)'
+    } },
+      React.createElement('div', { style: { fontFamily: "'Chakra Petch',sans-serif", fontWeight: 700, fontSize: 32, color: '#eaf4ff', lineHeight: 1 } }, String(n).padStart(2, '0')),
+      React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 9.5, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#22d3ee', marginTop: 5 } }, 'systems'));
+
+    const nodes = this.projects.map((p, i) => {
+      const ang = (-90 + i * (360 / n)) * Math.PI / 180;
+      const x = Math.cos(ang) * R, y = Math.sin(ang) * R;
+      const active = selected === i, hov = hovered === i;
+      return React.createElement('button', {
+        key: i,
+        onClick: () => this.setState({ selected: i }),
+        onMouseEnter: () => this.setState({ hovered: i }),
+        onMouseLeave: () => this.setState({ hovered: -1 }),
+        style: {
+          position: 'absolute', left: '50%', top: '50%', width: 150, height: 150, marginLeft: -75, marginTop: -75,
+          borderRadius: '50%', cursor: 'pointer', zIndex: hov || active ? 5 : 3,
+          border: active ? '1.5px solid #22d3ee' : hov ? '1px solid rgba(56,189,248,0.7)' : '1px solid rgba(56,189,248,0.25)',
+          background: active ? 'radial-gradient(circle at 32% 28%, #0d3a66, #081426)' : '#081020',
+          color: '#dbe7f5', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+          gap: 6, padding: 10, textAlign: 'center', fontFamily: "'Space Grotesk',sans-serif",
+          boxShadow: hov || active ? '0 0 55px -10px rgba(56,189,248,0.8)' : '0 10px 30px -18px rgba(0,0,0,0.7)',
+          opacity: orbit ? 1 : 0,
+          transform: orbit ? `translate(${x}px, ${y}px) scale(${hov ? 1.13 : active ? 1.06 : 1})` : 'translate(0,0) scale(0.2)',
+          transition: `transform .9s cubic-bezier(.16,1,.3,1) ${0.15 + i * 0.12}s, opacity .7s ease ${0.15 + i * 0.12}s, box-shadow .35s ease, border-color .3s ease, background .3s ease`
+        }
+      },
+        React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 10.5, color: '#22d3ee', letterSpacing: '0.14em' } }, 'N-' + String(i + 1).padStart(2, '0')),
+        React.createElement('div', { style: { fontFamily: "'Chakra Petch',sans-serif", fontWeight: 600, fontSize: 20, lineHeight: 1.05, color: '#eaf4ff' } }, p.short),
+        React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 9.5, color: '#5b7290', lineHeight: 1.3, maxWidth: 112 } }, p.tech[0]));
+    });
+
+    return React.createElement('div', { key: 'orbitouter', style: { width: '100%', display: 'flex', justifyContent: 'center', height: 620 * orbitScale } },
+      React.createElement('div', { style: { position: 'relative', width: 620, height: 620, flexShrink: 0, transform: `scale(${orbitScale})`, transformOrigin: 'top center' } },
+        ring2, sweep, ring, ...nodes, hub));
+  }
+
+  renderDetail() {
+    const { selected } = this.state;
+    if (selected === null) {
+      return React.createElement('div', { key: 'hint', style: {
+        textAlign: 'center', marginTop: 22, fontFamily: "'JetBrains Mono',monospace", fontSize: 12,
+        letterSpacing: '0.16em', textTransform: 'uppercase', color: '#3d5a7a'
+      } }, '[ tap a node to open its live preview ]');
+    }
+    const p = this.projects[selected];
+    const frameBody = p.liveUrl
+      ? React.createElement('iframe', { src: p.liveUrl, style: { width: '100%', height: 380, border: 'none', display: 'block', background: '#02050c' }, loading: 'lazy' })
+      : React.createElement('div', { style: {
+          height: 380, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12,
+          background: 'repeating-linear-gradient(0deg, rgba(56,189,248,0.04) 0 1px, transparent 1px 26px), repeating-linear-gradient(90deg, rgba(56,189,248,0.04) 0 1px, transparent 1px 26px), #050b16',
+          fontFamily: "'JetBrains Mono',monospace", color: '#5b7290', fontSize: 12, textAlign: 'center', padding: 24
+        } },
+        React.createElement('div', { style: { width: 46, height: 46, borderRadius: '50%', border: '1px dashed rgba(56,189,248,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8', fontSize: 18, animation: 'taspin 7s linear infinite' } }, '◈'),
+        React.createElement('div', { style: { fontSize: 12, color: '#22d3ee', letterSpacing: '0.18em', textTransform: 'uppercase' } }, 'awaiting deploy link'),
+        React.createElement('div', { style: { maxWidth: 320, lineHeight: 1.6 } }, 'Add this project\u2019s deployed URL to embed a live, interactive frame here.'));
+
+    const frame = React.createElement('div', { style: {
+      flex: '1 1 420px', minWidth: 300, overflow: 'hidden', border: '1px solid rgba(56,189,248,0.22)', background: '#02050c'
+    } },
+      React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', background: '#081020', borderBottom: '1px solid rgba(56,189,248,0.14)' } },
+        React.createElement('span', { style: { width: 9, height: 9, borderRadius: '50%', background: '#1e3a5f' } }),
+        React.createElement('span', { style: { width: 9, height: 9, borderRadius: '50%', background: '#1e3a5f' } }),
+        React.createElement('span', { style: { width: 9, height: 9, borderRadius: '50%', background: '#22d3ee' } }),
+        React.createElement('div', { style: { marginLeft: 10, flex: 1, fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: '#5b7290', background: '#02050c', padding: '5px 12px', border: '1px solid rgba(56,189,248,0.1)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }, p.liveUrl || 'https:// — pending deployment')),
+      frameBody);
+
+    const info = React.createElement('div', { style: { flex: '1 1 300px', minWidth: 260, display: 'flex', flexDirection: 'column' } },
+      React.createElement('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 } },
+        React.createElement('span', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: '#22d3ee', letterSpacing: '0.16em', textTransform: 'uppercase' } }, '[' + p.badge + ']'),
+        React.createElement('button', { onClick: () => this.setState({ selected: null }), style: { background: 'none', border: '1px solid rgba(56,189,248,0.3)', color: '#8fa3bb', width: 30, height: 30, cursor: 'pointer', fontSize: 15, lineHeight: 1 } }, '\u00d7')),
+      React.createElement('h3', { style: { fontFamily: "'Chakra Petch',sans-serif", fontWeight: 700, fontSize: 32, lineHeight: 1.05, color: '#eaf4ff', margin: '14px 0 4px', textTransform: 'uppercase' } }, p.name),
+      React.createElement('div', { style: { color: '#38bdf8', fontSize: 14, marginBottom: 18, fontFamily: "'JetBrains Mono',monospace" } }, p.sub),
+      ...p.points.map((pt, k) => React.createElement('p', { key: k, style: { color: '#8fa3bb', fontSize: 14, lineHeight: 1.55, marginBottom: 12, display: 'flex', gap: 10 } },
+        React.createElement('span', { style: { color: '#22d3ee', flexShrink: 0 } }, '\u25b8'), pt)),
+      React.createElement('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 8, margin: '6px 0 20px' } },
+        ...p.tech.map((t, k) => React.createElement('span', { key: k, style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: '#7dd3fc', border: '1px solid rgba(56,189,248,0.2)', background: 'rgba(56,189,248,0.05)', padding: '5px 11px' } }, t))),
+      React.createElement('div', { style: { display: 'flex', gap: 12, marginTop: 'auto' } },
+        React.createElement('a', { href: p.repoUrl || '#', style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 13, fontWeight: 600, color: '#030710', background: '#38bdf8', padding: '11px 20px', textDecoration: 'none' } }, 'GitHub ↗'),
+        p.liveUrl ? React.createElement('a', { href: p.liveUrl, target: '_blank', style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 13, color: '#7dd3fc', padding: '11px 20px', border: '1px solid rgba(56,189,248,0.3)', textDecoration: 'none' } }, 'Open live ↗') : null));
+
+    return React.createElement('div', { key: 'detail', style: {
+      display: 'flex', flexWrap: 'wrap', gap: 26, marginTop: 30, padding: 22,
+      background: '#081020', border: '1px solid rgba(56,189,248,0.18)', boxShadow: '0 30px 80px -40px rgba(14,165,233,0.4)'
+    } }, frame, info);
+  }
+
+  // ── Form ─────────────────────────────────────────────────────
+  field(k) { return (e) => this.setState({ form: { ...this.state.form, [k]: e.target.value } }); }
+
+  submit = (e) => {
+    e.preventDefault();
+    const f = this.state.form; const errors = {};
+    if (!f.name.trim()) errors.name = '! name required';
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email)) errors.email = '! valid email required';
+    if (f.message.trim().length < 8) errors.message = '! add a little more detail';
+    if (Object.keys(errors).length) { this.setState({ errors }); return; }
+    this.setState({ errors: {}, sent: true });
+  };
+
+  renderVals() {
+    const f = this.state.form, err = this.state.errors, foc = this.state.focus;
+    const inputStyle = (k) => ({
+      width: '100%', background: '#02050c', border: `1px solid ${foc === k ? '#38bdf8' : 'rgba(56,189,248,0.2)'}`,
+      padding: '13px 16px', color: '#eaf4ff', fontSize: 14, outline: 'none',
+      fontFamily: "'JetBrains Mono',monospace", transition: 'border-color .25s ease',
+      boxShadow: foc === k ? '0 0 24px -8px rgba(56,189,248,0.5)' : 'none'
+    });
+    const labelStyle = { display: 'block', fontFamily: "'JetBrains Mono',monospace", fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#5b7290', marginBottom: 8 };
+    const errStyle = { color: '#f87171', fontSize: 12, marginTop: 6, fontFamily: "'JetBrains Mono',monospace" };
+
+    const skillsEl = this.skills.map((s, i) => React.createElement('div', {
+      key: i, 'data-reveal': '', style: {
+        opacity: 0, transform: 'translateY(20px)', transition: `opacity .7s ease ${i * 0.09}s, transform .7s ease ${i * 0.09}s`,
+        background: 'rgba(56,189,248,0.25)', clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))', padding: 1
+      }
+    },
+      React.createElement('div', { style: { background: '#060d1a', clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))', padding: '22px 20px', height: '100%' } },
+        React.createElement('div', { style: { display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 16 } },
+          React.createElement('span', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: '#22d3ee' } }, 'M0' + (i + 1)),
+          React.createElement('h4', { style: { fontFamily: "'Chakra Petch',sans-serif", fontWeight: 600, fontSize: 17, color: '#eaf4ff', textTransform: 'uppercase', letterSpacing: '0.04em' } }, s.cat)),
+        React.createElement('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 8 } },
+          ...s.items.map((it, k) => React.createElement('span', { key: k, style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 12.5, color: '#8fa3bb', background: 'rgba(56,189,248,0.06)', border: '1px solid rgba(56,189,248,0.14)', padding: '7px 13px' } }, it))))));
+
+    const journeyEl = this.journey.map((j, i) => {
+      const pad = React.createElement('div', { style: { position: 'relative', flexShrink: 0, width: 16, display: 'flex', justifyContent: 'center', paddingTop: 4 } },
+        React.createElement('span', { style: {
+          width: 14, height: 14, background: '#060d1a',
+          border: `1.5px solid ${j.ongoing ? '#22d3ee' : 'rgba(56,189,248,0.55)'}`,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          animation: j.ongoing ? 'tapulse 2.2s ease-out infinite' : 'none'
+        } }, React.createElement('span', { style: { width: 4, height: 4, background: j.ongoing ? '#22d3ee' : '#38bdf8' } })));
+      const card = React.createElement('div', { style: { flex: 1, minWidth: 0, paddingBottom: 4 } },
+        React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 12, letterSpacing: '0.1em', color: '#38bdf8', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' } },
+          j.date,
+          j.ongoing ? React.createElement('span', { style: { fontSize: 10, color: '#030710', background: '#22d3ee', padding: '2px 9px', letterSpacing: '0.1em', fontWeight: 600 } }, 'ONGOING') : null),
+        React.createElement('h3', { style: { fontFamily: "'Chakra Petch',sans-serif", fontWeight: 600, fontSize: 23, lineHeight: 1.15, color: '#eaf4ff' } }, j.title),
+        React.createElement('div', { style: { color: '#5b7290', fontSize: 13.5, margin: '4px 0 10px', fontFamily: "'JetBrains Mono',monospace" } }, j.org),
+        React.createElement('p', { style: { color: '#8fa3bb', fontSize: 14.5, lineHeight: 1.6, maxWidth: 560 } }, j.desc));
+      return React.createElement('div', {
+        key: i, 'data-reveal': '', style: {
+          opacity: 0, transform: 'translateY(30px)', transition: 'opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1)',
+          display: 'flex', alignItems: 'flex-start', gap: 22
+        }
+      }, pad, card);
+    });
+
+    const honorsEl = this.honors.map((h, i) => React.createElement('span', { key: i, style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 12, color: '#7dd3fc', border: '1px solid rgba(56,189,248,0.2)', background: 'rgba(56,189,248,0.04)', padding: '7px 13px' } }, h));
+
+    const marqueeWords = ['Python', 'FastAPI', 'PyTorch', 'React', 'YOLO', 'MongoDB', 'GCP', 'MQTT', 'Three.js', 'AI/ML'];
+    const marqueeRow = [...marqueeWords, ...marqueeWords].map((w, i) => React.createElement('span', { key: i, style: { display: 'flex', alignItems: 'center', gap: 40, whiteSpace: 'nowrap' } }, w, React.createElement('span', { style: { color: '#38bdf8', fontSize: 16 } }, '⟢')));
+    const marqueeEl = React.createElement(React.Fragment, null, ...marqueeRow);
+
+    const contactForm = this.state.sent
+      ? React.createElement('div', { style: { padding: 40, background: '#060d1a', border: '1px solid rgba(34,211,238,0.4)', textAlign: 'center', boxShadow: '0 0 60px -20px rgba(56,189,248,0.5)' } },
+          React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 12, letterSpacing: '0.22em', color: '#22d3ee', marginBottom: 14 } }, '[ TRANSMISSION OK ]'),
+          React.createElement('h3', { style: { fontFamily: "'Chakra Petch',sans-serif", fontWeight: 700, fontSize: 26, color: '#eaf4ff', marginBottom: 8, textTransform: 'uppercase' } }, 'Message queued'),
+          React.createElement('p', { style: { color: '#8fa3bb', fontSize: 14.5, fontFamily: "'JetBrains Mono',monospace" } }, 'thanks ' + (f.name || 'friend') + ' — response inbound soon.'))
+      : React.createElement('form', { onSubmit: this.submit, style: { display: 'flex', flexDirection: 'column', gap: 18, padding: 26, background: '#060d1a', border: '1px solid rgba(56,189,248,0.18)' } },
+          React.createElement('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: 11, letterSpacing: '0.18em', color: '#5b7290', borderBottom: '1px solid rgba(56,189,248,0.14)', paddingBottom: 12, display: 'flex', justifyContent: 'space-between' } },
+            React.createElement('span', null, './lets-talk --init'), React.createElement('span', { style: { color: '#22d3ee' } }, '● live')),
+          React.createElement('div', null,
+            React.createElement('label', { style: labelStyle }, '> name:'),
+            React.createElement('input', { value: f.name, onChange: this.field('name'), onFocus: () => this.setState({ focus: 'name' }), onBlur: () => this.setState({ focus: '' }), placeholder: 'your name', style: inputStyle('name') }),
+            err.name ? React.createElement('div', { style: errStyle }, err.name) : null),
+          React.createElement('div', null,
+            React.createElement('label', { style: labelStyle }, '> email:'),
+            React.createElement('input', { value: f.email, onChange: this.field('email'), onFocus: () => this.setState({ focus: 'email' }), onBlur: () => this.setState({ focus: '' }), placeholder: 'you@domain.com', style: inputStyle('email') }),
+            err.email ? React.createElement('div', { style: errStyle }, err.email) : null),
+          React.createElement('div', null,
+            React.createElement('label', { style: labelStyle }, '> message:'),
+            React.createElement('textarea', { value: f.message, onChange: this.field('message'), onFocus: () => this.setState({ focus: 'message' }), onBlur: () => this.setState({ focus: '' }), placeholder: 'tell me about your idea…', rows: 4, style: { ...inputStyle('message'), resize: 'vertical', minHeight: 108 } }),
+            err.message ? React.createElement('div', { style: errStyle }, err.message) : null),
+          React.createElement('button', { type: 'submit', style: { marginTop: 4, background: '#38bdf8', color: '#030710', border: 'none', padding: '14px', fontSize: 14, fontWeight: 600, cursor: 'pointer', fontFamily: "'JetBrains Mono',monospace", letterSpacing: '0.06em', boxShadow: '0 0 34px -8px rgba(56,189,248,0.6)' } }, 'transmit_message ↗'));
+
+    return {
+      setRoot: (el) => { this.rootEl = el; },
+      preloaderEl: this.renderPreloader(),
+      heroCircuitEl: this.genAmbient('hero', 26),
+      contactCircuitEl: this.genAmbient('contact', 16),
+      terminalEl: this.renderTerminal(),
+      projectsUI: React.createElement(React.Fragment, null, this.renderOrbit(), this.renderDetail()),
+      skillsEl, journeyEl, honorsEl, marqueeEl, contactForm
+    };
+  }
+}
+</script>
+</body>
+</html>
